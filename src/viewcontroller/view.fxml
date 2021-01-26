@@ -23,7 +23,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
             <Label prefHeight="50.0" text="Rot" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="red_txt" prefHeight="50.0" text="0" />
+            <TextField fx:id="red_txt" onAction="#RedAbsolute" prefHeight="50.0" text="0" />
             <Label prefHeight="50.0" text="Grün" />
          </children>
       </VBox>
@@ -36,9 +36,9 @@
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <TextField fx:id="green_txt" prefHeight="50.0" text="0" />
+            <TextField fx:id="green_txt" onAction="#GreenAbsolute" prefHeight="50.0" text="0" />
             <Label prefHeight="50.0" text="Blau" />
-            <TextField fx:id="blue_txt" prefHeight="50.0" text="0" />
+            <TextField fx:id="blue_txt" onAction="#BlueAbsolute" prefHeight="50.0" text="0" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

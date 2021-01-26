@@ -21,10 +21,7 @@ import java.util.ResourceBundle;
  * @author Simon Sperr
  * @version 2020.3, 21.1.2021
  */
-public class Controller extends Application {
-    public static void main(String[] args) {
-        launch(args);
-    }
+public class Controller{
 
     ColorCalc colorCalc = new ColorCalc();
 
@@ -42,42 +39,63 @@ public class Controller extends Application {
     public void RedPlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.RED, 10);
-        red_txt.setText(String.valueOf(colorCalc.getRed()));
+        updateColor();
     }
 
     public void RedMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.RED, -10);
-        red_txt.setText(String.valueOf(colorCalc.getRed()));
+        updateColor();
+    }
+
+    public void RedAbsolute()
+    {
+        colorCalc.changeColorViaAbsoluteValue(ColorCode.RED, red_txt.getText());
+        updateColor();
     }
 
     public void GreenPlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.GREEN, 10);
-        green_txt.setText(String.valueOf(colorCalc.getGreen()));
+        updateColor();
     }
 
     public void GreenMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.GREEN, -10);
-        green_txt.setText(String.valueOf(colorCalc.getGreen()));
+        updateColor();
     }
 
+    public void GreenAbsolute()
+    {
+        colorCalc.changeColorViaAbsoluteValue(ColorCode.GREEN, green_txt.getText());
+        updateColor();
+    }
     public void BluePlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.BLUE, 10);
-        blue_txt.setText(String.valueOf(colorCalc.getBlue()));
+        updateColor();
     }
 
     public void BlueMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.BLUE, -10);
-        blue_txt.setText(String.valueOf(colorCalc.getBlue()));
+        updateColor();
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        show(stage);
+    public void BlueAbsolute()
+    {
+        colorCalc.changeColorViaAbsoluteValue(ColorCode.BLUE, blue_txt.getText());
+        updateColor();
+    }
+
+    public void updateColor()
+    {
+        red_txt.setText(String.valueOf(colorCalc.getRed()));
+        green_txt.setText(String.valueOf(colorCalc.getGreen()));
+        blue_txt.setText(String.valueOf(colorCalc.getBlue()));
+        hex_lbl.setText("Hex: " + colorCalc.getHex());
+        color_pane.setStyle("-fx-background-color: " + colorCalc.getHex() + ";");
     }
 
     public static void show(Stage stage) {
