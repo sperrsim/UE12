@@ -31,7 +31,7 @@ public class ColorCalc {
             switch (select)
             {
                 case 1:
-                    System.out.printf("Geben Sie einen Wert für jeden Farbanteil ein!");
+                    System.out.println("Geben Sie einen Wert für jeden Farbanteil ein!");
                     try
                     {
                         System.out.println("Rot:");
