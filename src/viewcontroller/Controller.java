@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import model.ColorCalc;
 import model.ColorCode;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,55 +35,69 @@ public class Controller{
     Label hex_lbl;
     @FXML
     Pane color_pane;
+    @FXML
+    Label error_lbl;
 
-    public void RedPlus()
+    public void load()
+    {
+        colorCalc.loadFromFile();
+        updateColor();
+    }
+
+    public void save()
+    {
+        colorCalc.saveToFile();
+        updateColor();
+    }
+
+    public void redPlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.RED, 10);
         updateColor();
     }
 
-    public void RedMinus()
+    public void redMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.RED, -10);
         updateColor();
     }
 
-    public void RedAbsolute()
+    public void redAbsolute()
     {
         colorCalc.changeColorViaAbsoluteValue(ColorCode.RED, red_txt.getText());
         updateColor();
     }
 
-    public void GreenPlus()
+    public void greenPlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.GREEN, 10);
         updateColor();
     }
 
-    public void GreenMinus()
+    public void greenMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.GREEN, -10);
         updateColor();
     }
 
-    public void GreenAbsolute()
+    public void greenAbsolute()
     {
         colorCalc.changeColorViaAbsoluteValue(ColorCode.GREEN, green_txt.getText());
         updateColor();
     }
-    public void BluePlus()
+    public void bluePlus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.BLUE, 10);
         updateColor();
     }
 
-    public void BlueMinus()
+    public void blueMinus()
     {
         colorCalc.changeColorViaRelativValue(ColorCode.BLUE, -10);
         updateColor();
     }
 
-    public void BlueAbsolute()
+    public void blueAbsolute()
     {
         colorCalc.changeColorViaAbsoluteValue(ColorCode.BLUE, blue_txt.getText());
         updateColor();

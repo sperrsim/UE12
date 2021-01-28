@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -23,32 +24,43 @@
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
             <Label prefHeight="50.0" text="Rot" VBox.vgrow="ALWAYS" />
-            <TextField fx:id="red_txt" onAction="#RedAbsolute" prefHeight="50.0" text="0" />
+            <TextField fx:id="red_txt" onAction="#redAbsolute" prefHeight="50.0" text="0" />
             <Label prefHeight="50.0" text="Grün" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#RedPlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
-            <Button mnemonicParsing="false" onAction="#RedMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
-            <Button mnemonicParsing="false" onAction="#GreenPlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
+            <Button mnemonicParsing="false" onAction="#redPlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
+            <Button mnemonicParsing="false" onAction="#redMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
+            <Button mnemonicParsing="false" onAction="#greenPlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
          <children>
-            <TextField fx:id="green_txt" onAction="#GreenAbsolute" prefHeight="50.0" text="0" />
+            <TextField fx:id="green_txt" onAction="#greenAbsolute" prefHeight="50.0" text="0" />
             <Label prefHeight="50.0" text="Blau" />
-            <TextField fx:id="blue_txt" onAction="#BlueAbsolute" prefHeight="50.0" text="0" />
+            <TextField fx:id="blue_txt" onAction="#blueAbsolute" prefHeight="50.0" text="0" />
          </children>
       </VBox>
       <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Button mnemonicParsing="false" onAction="#GreenMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
-            <Button mnemonicParsing="false" onAction="#BluePlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
-            <Button mnemonicParsing="false" onAction="#BlueMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
+            <Button mnemonicParsing="false" onAction="#greenMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
+            <Button mnemonicParsing="false" onAction="#bluePlus" prefHeight="50.0" prefWidth="100.0" text="+10" />
+            <Button mnemonicParsing="false" onAction="#blueMinus" prefHeight="50.0" prefWidth="100.0" text="-10" />
          </children>
       </VBox>
       <Pane fx:id="color_pane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" GridPane.columnIndex="2" />
-      <Label fx:id="hex_lbl" text="Hex: 000000" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="hex_lbl" alignment="CENTER" text="Hex: 000000" />
+            <HBox>
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="50.0" prefWidth="100.0" text="Speichern" />
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#load" prefHeight="50.0" prefWidth="100.0" text="Laden" />
+               </children>
+            </HBox>
+            <Label fx:id="error_lbl" textFill="RED" visible="false" />
+         </children>
+      </VBox>
    </children>
 </GridPane>

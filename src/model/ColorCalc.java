@@ -2,6 +2,7 @@ package model;
 
 import model.ColorCode;
 
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -49,7 +50,7 @@ public class ColorCalc {
                     System.out.println(calc.toString());
                     break;
                 case 2:
-                    System.out.println("Geben Sie für jeden Farbanteil einen Wert ein um den dieser verändert werden soll!);
+                    System.out.println("Geben Sie für jeden Farbanteil einen Wert ein um den dieser verändert werden soll!");
                     try
                     {
                         System.out.println("Rot:");
@@ -211,6 +212,51 @@ public class ColorCalc {
         else
             hex += Integer.toHexString(getBlue());
         return hex;
+    }
+
+    public void loadFromFile()
+    {
+        try(FileReader fr = new FileReader("saveFiles/color.dat"))
+        {
+            BufferedReader br = new BufferedReader(fr);
+            if(br.readLine().equals("Color File Version 1.0"))
+            {
+                changeColorViaAbsoluteValue(ColorCode.RED, br.readLine());
+                changeColorViaAbsoluteValue(ColorCode.GREEN, br.readLine());
+                changeColorViaAbsoluteValue(ColorCode.BLUE, br.readLine());
+                System.out.println("Farbe erfolgreich geladen!");
+            }
+            else
+            {
+                System.out.println("Falsche Version der Sicherung oder beschädigte Datei!");
+            }
+        }
+        catch (IOException ex)
+        {
+            System.out.println("Fehler beim Laden!");
+        }
+    }
+
+    public void saveToFile()
+    {
+        try(FileWriter fw = new FileWriter("saveFiles/color.dat"))
+        {
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write("Color File Version 1.0");
+            bw.newLine();
+            bw.write(String.valueOf(getRed()));
+            bw.newLine();
+            bw.write(String.valueOf(getGreen()));
+            bw.newLine();
+            bw.write(String.valueOf(getBlue()));
+            bw.close();
+            System.out.println("Farbe Abgespeichert!");
+        }
+        catch (IOException ex)
+        {
+            System.out.println("Fehler beim Speichern der Datei!");
+        }
+
     }
 
     @Override
